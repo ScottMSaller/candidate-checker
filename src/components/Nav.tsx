@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 const Nav = () => {
   return (
     <nav className="nav">
-        <p className="nav-item"><a className="nav-link" href="/">Candidate Search</a></p>
-        <p className="nav-item"><a className="nav-link" href="/SavedCandidates">Saved Candidates</a></p>
+      <p className="nav-item"><Link className="nav-link" to="/">Candidate Search</Link></p>
+      <p className="nav-item"><Link className="nav-link" to="/SavedCandidates">Saved Candidates</Link></p>
     </nav>
   )
 };

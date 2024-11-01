@@ -18,12 +18,13 @@ const router = createBrowserRouter([
         element: <CandidateSearch />,
       },
       {
-        path: './SavedCandidates',
+        path: 'SavedCandidates',
         element: <SavedCandidates />,
       },
     ],
   },
 ]);
+
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
