@@ -29,7 +29,7 @@ const SavedCandidates = () => {
     const currentArray = JSON.parse(localStorage.getItem('userArray') || '[]');
     const updatedArray = currentArray.filter((data: { login: string; }) => data.login !== user.login);
     localStorage.setItem('userArray', JSON.stringify(updatedArray));
-    window.location.href = '/SavedCandidates'
+    window.location.href = 'SavedCandidates'
   }}
 >
   Remove
