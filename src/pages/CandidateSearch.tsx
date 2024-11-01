@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { searchGithub, searchGithubUser } from '../api/api';
+import { searchGithub, searchGithubUser } from '../api/API';
 import CandidateI from '../interfaces/Candidate.interface';
 import CandidateCard from '../components/CandidateCard';
 const CandidateSearch = () => {
