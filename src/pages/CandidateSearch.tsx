@@ -21,8 +21,6 @@ const CandidateSearch = () => {
     const fetchUser = async () => {
       const data = await searchGithubUser(userList[index]);
       const keys = ['avatar_url', 'login', 'location', 'email', 'company', 'bio'];
-      
-      // Filter the data object to only include the specified keys
       const filteredData = keys.reduce((obj: { [key: string]: any }, key) => {
         if (data.hasOwnProperty(key)) {
           obj[key] = data[key];
@@ -30,17 +28,17 @@ const CandidateSearch = () => {
         return obj;
       }, {});
   
-      console.log(filteredData); // This will log the filtered object
+      console.log(filteredData);
       setUser(filteredData as CandidateI)
     };
   
     fetchUser();
-  }, [userList, index]); // Add dependencies if needed
+  }, [userList, index]);
 
   return (
     <div>
     <h1>CandidateSearch</h1>
-    <CandidateCard 
+    <CandidateCard
       avatar_url={currentUser?.avatar_url || ''} 
       login={currentUser?.login || ''} 
       location={currentUser?.location || ''} 
