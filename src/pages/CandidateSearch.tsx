@@ -1,54 +1,59 @@
 import { useState, useEffect } from 'react';
 import { searchGithub, searchGithubUser } from '../api/API';
-import CandidateSingleView from '../components/CandidateSingleView';
-import CandidateI from '../interfaces/CandidateInterface';
+import CandidateI from '../interfaces/Candidate.interface';
+import CandidateCard from '../components/CandidateCard';
 const CandidateSearch = () => {
-  const [usersArray, setUsersArray] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
-  const [index, setIndex] = useState(1);
+  const [userList, setList] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [currentUser, setUser] = useState<CandidateI | null>(null);
   useEffect(() => {
-
-    const fetchData = async() => {
-      try {
-        const data = await searchGithub();
-        let usernameData = data.map((user: { login: any; }) => {
-          return user.login;
-        })
-        setUsersArray(usernameData);
-      }
-      catch(error) {
-        console.log(error);
-      } 
-    }
-    fetchData();
-  }, []);
-
-  const fetchMoreData = async() => {
-    const moreData = await searchGithubUser(usersArray[index]);
-    const currentUser = filterResponse<CandidateI>(moreData, ['avatar_url', 'login', 'location', 'email', 'company', 'bio']);
-    return setCurrentUser(currentUser);
-  }
-  useEffect(() => {
-    fetchMoreData();
-  }, []);
-
-  console.log(currentUser);
-
-  function filterResponse<T>(response: any, keys: Array<keyof T>): T {
-    const filtered: Partial<T> = {};
-    keys.forEach(key => {
-      if (key in response) {
-        filtered[key] = response[key];
-      }
+    const fetchUserList = async() => {
+    const data  = await searchGithub();
+    const tempData = data.map((user: any)=> {
+      return user.login;
     });
-    return filtered as T;
-  }
+    setList(tempData);
+    };
+    fetchUserList();
+  },[]);
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      const data = await searchGithubUser(userList[index]);
+      const keys = ['avatar_url', 'login', 'location', 'email', 'company', 'bio'];
+      const filteredData = keys.reduce((obj: { [key: string]: any }, key) => {
+        if (data.hasOwnProperty(key)) {
+          obj[key] = data[key];
+        }
+        return obj;
+      }, {});
+  
+      console.log(filteredData);
+      setUser(filteredData as CandidateI)
+    };
+  
+    fetchUser();
+  }, [userList, index]);
 
-  return <div>
-  <h1>CandidateSearch</h1>
-  <CandidateSingleView person={currentUser}/>
-  </div>
+  return (
+    <div>
+    <h1>CandidateSearch</h1>
+    <CandidateCard
+      avatar_url={currentUser?.avatar_url || ''} 
+      login={currentUser?.login || ''} 
+      location={currentUser?.location || ''} 
+      email={currentUser?.email || ''} 
+      company={currentUser?.company || ''} 
+      bio={currentUser?.bio || ''} 
+    />
+    <button onClick={() => setIndex(index + 1)}>No</button>
+    <button onClick={() => { 
+      setIndex(index + 1); 
+      const currentArray = JSON.parse(localStorage.getItem('userArray') || '[]');
+      currentArray.push(currentUser);
+      localStorage.setItem('userArray', JSON.stringify(currentArray)); }}>Yes</button>
+    </div>
+  )
 };
 
 export default CandidateSearch;
