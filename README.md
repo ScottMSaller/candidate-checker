@@ -1,33 +1,46 @@
-# React + TypeScript + Vite
+  # Github Candidate Checker
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+  ## Description
+  Github Candidate Checker is a program that allows a user to look through a list of random profiles on Github and allows you to save a list of candidates that you may be interested in into local storage on your device.
 
-* [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md), which uses [Babel](https://babeljs.io/) for Fast Refresh
-* [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc), which uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+  ## Table of Contents
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Contributing](#contributing)
+  * [Tests](#tests)
+  * [Questions](#questions)
 
-If you're developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-* Configure the top-level `parserOptions` property as follows:
+  ## Installation
+  To install the project, first clone the directory on to your local machine. Then, you will run npm install to install the dependencies for the project. Lastly, you will navigate to the root of the directory in the terminal and run npm run dev to start the application.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-* Replace `plugin:@typescript-eslint/recommended` with `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`.
-* Optionally, add `plugin:@typescript-eslint/stylistic-type-checked`.
-* Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` and `plugin:react/jsx-runtime` to the `extends` list.
+  ## Usage
+  The project is designed to help the user find as many Github users that they may be interested in as possible. It may prove useful for employers looking to hire more people or for freelancers looking to collaborate with other members of the Github community.
 
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+
+  ## License
+  
+This project has a MIT license. 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+
+https://opensource.org/licenses/MIT 
+
+  
+
+
+  ## Contributing
+  Contributions are always welcome! Please feel free to create a branch and push any commits up for review that you may want to.
+
+
+  ## Tests
+  After running npm i in the root of the directory, run npm run dev to start the program, to make sure that everything works.
+
+
+  ## Questions
+  If you have any questions about the Github Candidate Checker application, please contact me at scottmsaller@gmail.com or visit my GitHub profile at [Scottmsaller](https://github.com/Scottmsaller).
